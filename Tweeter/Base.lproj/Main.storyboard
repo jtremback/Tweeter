@@ -459,8 +459,8 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nvL-IF-BuQ">
-                                <rect key="frame" x="16" y="152" width="568" height="404"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nvL-IF-BuQ">
+                                <rect key="frame" x="16" y="152" width="568" height="448"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Follow the guide for Submitting Assignments. Remember to include an animated gif and # of hours spent in the README. You can get started by copying this Twitter README template and checking things off as you complete them.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
