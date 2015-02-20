@@ -14,6 +14,7 @@
 		454890F61A94334100680907 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 454890F41A94334100680907 /* LaunchScreen.xib */; };
 		454891021A94334100680907 /* TweeterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454891011A94334100680907 /* TweeterTests.swift */; };
 		454891101A9437DF00680907 /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4548910F1A9437DF00680907 /* TwitterClient.swift */; };
+		454891121A9713C400680907 /* Compose.xib in Resources */ = {isa = PBXBuildFile; fileRef = 454891111A9713C400680907 /* Compose.xib */; };
 		B7B343A76B2A817AA304BB1A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF3C5D52A54E8676F52895AB /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		454891011A94334100680907 /* TweeterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweeterTests.swift; sourceTree = "<group>"; };
 		4548910B1A94373400680907 /* Tweeter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tweeter-Bridging-Header.h"; sourceTree = "<group>"; };
 		4548910F1A9437DF00680907 /* TwitterClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
+		454891111A9713C400680907 /* Compose.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Compose.xib; sourceTree = "<group>"; };
 		D1080D437EB01CF999A78491 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		EF3C5D52A54E8676F52895AB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -91,6 +93,7 @@
 				454890EB1A94334100680907 /* AppDelegate.swift */,
 				454890ED1A94334100680907 /* ViewController.swift */,
 				454890EF1A94334100680907 /* Main.storyboard */,
+				454891111A9713C400680907 /* Compose.xib */,
 				454890F21A94334100680907 /* Images.xcassets */,
 				454890F41A94334100680907 /* LaunchScreen.xib */,
 				454890E91A94334100680907 /* Supporting Files */,
@@ -233,6 +236,7 @@
 			files = (
 				454890F11A94334100680907 /* Main.storyboard in Resources */,
 				454890F61A94334100680907 /* LaunchScreen.xib in Resources */,
+				454891121A9713C400680907 /* Compose.xib in Resources */,
 				454890F31A94334100680907 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
