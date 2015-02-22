@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6750" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6735"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ComposeViewController" customModule="Tweeter" customModuleProvider="target">
+            <connections>
+                <outlet property="avatarImage" destination="2v1-kb-Wn1" id="FB7-9Z-gfO"/>
+                <outlet property="displayNameLabel" destination="Um3-WD-2Pq" id="IZo-dI-ggc"/>
+                <outlet property="textView" destination="dya-tG-IAI" id="WJM-7r-4Ni"/>
+                <outlet property="usernameLabel" destination="OZV-NW-wLx" id="6RR-x8-JRS"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+        </view>
+        <viewController id="8pk-zX-mgB">
+            <layoutGuides>
+                <viewControllerLayoutGuide type="top" id="NH1-Kj-A0h"/>
+                <viewControllerLayoutGuide type="bottom" id="P7A-h0-iID"/>
+            </layoutGuides>
+            <view key="view" contentMode="scaleToFill" id="sxs-LG-jY6">
+                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G5q-B9-JXK" userLabel="Avatar Image">
+                        <rect key="frame" x="16" y="72" width="80" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="63T-OH-g04"/>
+                            <constraint firstAttribute="height" constant="80" id="h8g-WE-nXB"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jehan Tremback" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQB-f1-CUB" userLabel="Display Name">
+                        <rect key="frame" x="104" y="90" width="137" height="21.5"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@JTremback" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rkD-90-mXK" userLabel="Username">
+                        <rect key="frame" x="104" y="113" width="92.5" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c48-Jl-CXi">
+                        <rect key="frame" x="16" y="152" width="568" height="448"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <string key="text">Follow the guide for Submitting Assignments. Remember to include an animated gif and # of hours spent in the README. You can get started by copying this Twitter README template and checking things off as you complete them.</string>
+                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="c48-Jl-CXi" firstAttribute="leading" secondItem="sxs-LG-jY6" secondAttribute="leadingMargin" id="PRx-UH-Har"/>
+                    <constraint firstItem="c48-Jl-CXi" firstAttribute="leading" secondItem="G5q-B9-JXK" secondAttribute="trailing" constant="-80" id="Ub4-GJ-Rmt"/>
+                    <constraint firstItem="rkD-90-mXK" firstAttribute="leading" secondItem="G5q-B9-JXK" secondAttribute="trailing" constant="8" id="XZb-In-7rV"/>
+                    <constraint firstItem="rkD-90-mXK" firstAttribute="top" secondItem="TQB-f1-CUB" secondAttribute="bottom" constant="1.5" id="bsA-Uz-ZCF"/>
+                    <constraint firstItem="c48-Jl-CXi" firstAttribute="trailing" secondItem="sxs-LG-jY6" secondAttribute="trailingMargin" id="ffs-kn-pnY"/>
+                    <constraint firstItem="c48-Jl-CXi" firstAttribute="top" secondItem="G5q-B9-JXK" secondAttribute="bottom" id="oBi-po-b1b"/>
+                    <constraint firstItem="G5q-B9-JXK" firstAttribute="top" secondItem="TQB-f1-CUB" secondAttribute="top" constant="-18" id="p3x-Pf-bGR"/>
+                    <constraint firstItem="TQB-f1-CUB" firstAttribute="leading" secondItem="G5q-B9-JXK" secondAttribute="trailing" constant="8" id="poV-Y7-qEp"/>
+                    <constraint firstItem="G5q-B9-JXK" firstAttribute="top" secondItem="NH1-Kj-A0h" secondAttribute="bottom" constant="8" id="sir-i7-xxQ"/>
+                    <constraint firstItem="G5q-B9-JXK" firstAttribute="leading" secondItem="sxs-LG-jY6" secondAttribute="leadingMargin" id="tl9-Wc-tCm"/>
+                    <constraint firstItem="P7A-h0-iID" firstAttribute="top" secondItem="c48-Jl-CXi" secondAttribute="bottom" id="v8o-mz-60S"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="Ub4-GJ-Rmt"/>
+                    </mask>
+                </variation>
+            </view>
+            <toolbarItems/>
+            <navigationItem key="navigationItem" title="Compose" id="ocu-ul-fwB">
+                <barButtonItem key="leftBarButtonItem" style="plain" id="Mso-HJ-xH9">
+                    <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gAz-vw-w6t">
+                        <rect key="frame" x="-23" y="-15" width="133" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" title="Cancel">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                </barButtonItem>
+                <barButtonItem key="rightBarButtonItem" style="plain" id="RVF-s9-vuO">
+                    <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="shH-25-6Ri">
+                        <rect key="frame" x="-23" y="-15" width="133" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" title="Tweet">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                </barButtonItem>
+            </navigationItem>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <point key="canvasLocation" x="2800" y="572"/>
+        </viewController>
+        <viewController id="DCs-W6-YiP">
+            <layoutGuides>
+                <viewControllerLayoutGuide type="top" id="qHm-kp-ipI"/>
+                <viewControllerLayoutGuide type="bottom" id="A8b-Hl-qMB"/>
+            </layoutGuides>
+            <view key="view" contentMode="scaleToFill" id="kQP-aZ-QAT">
+                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2v1-kb-Wn1" userLabel="Avatar Image">
+                        <rect key="frame" x="16" y="72" width="80" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="dCi-QR-Xv6"/>
+                            <constraint firstAttribute="height" constant="80" id="oWb-CM-hLd"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jehan Tremback" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Um3-WD-2Pq" userLabel="Display Name">
+                        <rect key="frame" x="104" y="90" width="137" height="21.5"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@JTremback" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OZV-NW-wLx" userLabel="Username">
+                        <rect key="frame" x="104" y="113" width="92.5" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dya-tG-IAI">
+                        <rect key="frame" x="16" y="152" width="568" height="448"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <string key="text">Follow the guide for Submitting Assignments. Remember to include an animated gif and # of hours spent in the README. You can get started by copying this Twitter README template and checking things off as you complete them.</string>
+                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="dya-tG-IAI" firstAttribute="top" secondItem="2v1-kb-Wn1" secondAttribute="bottom" id="7vl-ww-E6w"/>
+                    <constraint firstItem="dya-tG-IAI" firstAttribute="leading" secondItem="2v1-kb-Wn1" secondAttribute="trailing" constant="-80" id="B7C-1G-m9l"/>
+                    <constraint firstItem="dya-tG-IAI" firstAttribute="leading" secondItem="kQP-aZ-QAT" secondAttribute="leadingMargin" id="Bmv-5t-WIf"/>
+                    <constraint firstItem="2v1-kb-Wn1" firstAttribute="top" secondItem="Um3-WD-2Pq" secondAttribute="top" constant="-18" id="H3m-bW-pBL"/>
+                    <constraint firstItem="Um3-WD-2Pq" firstAttribute="leading" secondItem="2v1-kb-Wn1" secondAttribute="trailing" constant="8" id="OMW-WZ-EJj"/>
+                    <constraint firstItem="dya-tG-IAI" firstAttribute="trailing" secondItem="kQP-aZ-QAT" secondAttribute="trailingMargin" id="VDg-lE-5bm"/>
+                    <constraint firstItem="A8b-Hl-qMB" firstAttribute="top" secondItem="dya-tG-IAI" secondAttribute="bottom" id="Wre-zx-Hkf"/>
+                    <constraint firstItem="2v1-kb-Wn1" firstAttribute="leading" secondItem="kQP-aZ-QAT" secondAttribute="leadingMargin" id="lpZ-im-p5P"/>
+                    <constraint firstItem="2v1-kb-Wn1" firstAttribute="top" secondItem="qHm-kp-ipI" secondAttribute="bottom" constant="8" id="mCB-Ep-ADa"/>
+                    <constraint firstItem="OZV-NW-wLx" firstAttribute="leading" secondItem="2v1-kb-Wn1" secondAttribute="trailing" constant="8" id="py7-Lw-A8v"/>
+                    <constraint firstItem="OZV-NW-wLx" firstAttribute="top" secondItem="Um3-WD-2Pq" secondAttribute="bottom" constant="1.5" id="yuJ-Z7-3WW"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="B7C-1G-m9l"/>
+                    </mask>
+                </variation>
+            </view>
+            <toolbarItems/>
+            <navigationItem key="navigationItem" title="Compose" id="bGO-q2-apP">
+                <barButtonItem key="leftBarButtonItem" style="plain" id="sd6-Cp-EAP">
+                    <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zxT-eI-okI">
+                        <rect key="frame" x="-23" y="-15" width="133" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" title="Cancel">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="cancelButtonPressed:" destination="-1" eventType="touchUpInside" id="6Cm-bT-eIr"/>
+                        </connections>
+                    </button>
+                </barButtonItem>
+                <barButtonItem key="rightBarButtonItem" style="plain" id="fQ6-Bw-eKH">
+                    <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4vv-rS-oVm">
+                        <rect key="frame" x="-23" y="-15" width="133" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" title="Tweet">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="tweetButtonPressed:" destination="-1" eventType="touchUpInside" id="cab-hu-ido"/>
+                        </connections>
+                    </button>
+                </barButtonItem>
+            </navigationItem>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <point key="canvasLocation" x="2922" y="613"/>
+        </viewController>
+    </objects>
+</document>

@@ -3,4 +3,4 @@
 //
 
 #import "BDBOAuth1RequestOperationManager.h"
-#import "AFNetworking.h"
+#import "AFNetworking/UIImageView+AFNetworking.h"
