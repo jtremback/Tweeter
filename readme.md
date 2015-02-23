@@ -28,4 +28,4 @@ Time spent: `<Number of hours spent>`
 
 ### Walkthrough
 
-![Video Walkthrough](...)
+![Video Walkthrough](https://raw.githubusercontent.com/jtremback/Tweeter/master/walkthrough.gif)
