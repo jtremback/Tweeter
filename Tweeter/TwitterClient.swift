@@ -63,6 +63,7 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
             parameters: nil,
             success: {
                 (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                println(response)
                 var tweets = Tweet.tweetsWithArray(response as [NSDictionary])
                 
 //                for tweet in tweets {

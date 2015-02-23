@@ -14,8 +14,13 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var agoLabel: UILabel!
+    
     @IBOutlet weak var retweetedLabel: UILabel!
+    @IBOutlet weak var retweetedLabelHeight: NSLayoutConstraint!
     @IBOutlet weak var retweetedImage: UIImageView!
+    @IBOutlet weak var retweetedImageHeight: NSLayoutConstraint!
+    @IBOutlet weak var retweetedImageOffset: NSLayoutConstraint!
+
     
     @IBOutlet weak var retweetImage: UIImageView!
     @IBOutlet weak var replyImage: UIImageView!
@@ -34,15 +39,15 @@ class HomeTableViewCell: UITableViewCell {
 
     func populate (tweet: Tweet) {
         displayNameLabel.text = tweet.user?.displayName
-        usernameLabel.text = tweet.user?.username
+        usernameLabel.text = "@\(tweet.user?.username)"
         contentLabel.text = tweet.content
-        
-//        let avatarURL = tweet.user?.avatarURL
-//        avatarImage.setImageWithURL(NSURL(string: avatarURL!))
-        
+
         avatarImage.setImageWithURL(NSURL(string: (tweet.user?.avatarURL)!))
-//        agoLabel.text = tweet.createdAtString
-//        retweetedLabel.text
+        retweetedImage.hidden = true
+        retweetedImageHeight.constant = 0.0
+        retweetedLabel.hidden = true
+        retweetedLabelHeight.constant = 0.0
+        retweetedImageOffset.constant = 0.0
         
     }
 }

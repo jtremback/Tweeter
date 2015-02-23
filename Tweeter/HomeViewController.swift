@@ -16,6 +16,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     var tweets: [Tweet]?
+    var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,14 +25,37 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
+
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(
+            self,
+            action: "getTweets",
+            forControlEvents: UIControlEvents.ValueChanged
+        )
+
+        let dummyTableVC = UITableViewController()
+        dummyTableVC.tableView = tableView
+        dummyTableVC.refreshControl = refreshControl
         
         navigationItem.title = "Home"
+        getTweets()
+        // Do any additional setup after loading the view.
+    }
+
+    func getTweets () {
         TwitterClient.sharedInstance.getHomeTweetsForCurrentUser({
             (tweets, error) in
-            self.tweets = tweets
-            self.tableView.reloadData()
+            
+            if error != nil {
+                self.tableView.hidden = true
+            } else {
+                self.tableView.hidden = false
+                self.tweets = tweets
+                self.tableView.reloadData()
+            }
+
+            self.refreshControl.endRefreshing()
         })
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,32 +78,34 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     
-//    func tableView(
-//        tableView: UITableView!,
-//        cellTypeForRowWithIndexPath indexPath: NSIndexPath!
-//    ) -> UITableViewCellAccessoryType {
-//        let cell = tableView.dequeueReusableCellWithIdentifier(
-//            "HomeTableViewCell"
-//        ) as HomeTableViewCell
-//        
-//        return cell
-//    }
-    
     func tableView(
         tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        return 20
+        println("section: \(section)")
+        if let tweets = self.tweets {
+            println("tweets count \(tweets.count)")
+            return tweets.count
+        } else {
+            return 0
+        }
     }
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "tweetDetailSegue") {
+            let indexPath = self.tableView.indexPathForSelectedRow()!
+            let dest = segue.destinationViewController as TweetDetailViewController
+            dest.tweet = tweets?[indexPath.row]
+            
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+
 
 }
