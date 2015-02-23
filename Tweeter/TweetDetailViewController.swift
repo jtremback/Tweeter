@@ -24,21 +24,29 @@ class TweetDetailViewController: UIViewController {
     
     @IBOutlet weak var retweetsNumberLabel: UILabel!
     @IBOutlet weak var favoritesNumberLabel: UILabel!
-
-
-    @IBOutlet weak var replyButtonImage: UIImageView!
-    @IBAction func replyButtonAction(sender: AnyObject) {
-        
-    }
     
     @IBOutlet weak var retweetButtonImage: UIImageView!
     @IBAction func retweetButtonAction(sender: AnyObject) {
-    
+        println("tried")
+        TwitterClient.sharedInstance.retweet(tweet.ID) {
+            (tweet, error) -> () in
+            if error == nil {
+                println("RT")
+                self.retweetButtonImage.image = UIImage(named: "retweet-on")
+            }
+        }
     }
     
     @IBOutlet weak var favoriteButtonImage: UIImageView!
     @IBAction func favoriteButtonAction(sender: AnyObject) {
-    
+        println("tried")
+        TwitterClient.sharedInstance.favorite(tweet.ID) {
+            (error) -> () in
+            if error == nil {
+                println("FAVE")
+                self.favoriteButtonImage.image = UIImage(named: "favorite-on")
+            }
+        }
     }
 
     var tweet: Tweet!
@@ -47,7 +55,7 @@ class TweetDetailViewController: UIViewController {
         super.viewDidLoad()
         
         displayNameLabel.text = tweet.user?.displayName
-        usernameLabel.text = "@\(tweet.user?.username)"
+        usernameLabel.text = "@\((tweet.user?.username)!)"
         contentLabel.text = tweet.content
 
         avatarImage.setImageWithURL(NSURL(string: (tweet.user?.avatarURL)!))

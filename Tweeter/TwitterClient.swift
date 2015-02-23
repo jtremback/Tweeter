@@ -54,7 +54,6 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         )
     }
     
-    
     func getHomeTweetsForCurrentUser (
         completion: (tweets: [Tweet]?, error: NSError?) -> ()
     ) {
@@ -65,10 +64,6 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
                 (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
                 println(response)
                 var tweets = Tweet.tweetsWithArray(response as [NSDictionary])
-                
-//                for tweet in tweets {
-//                    println("tweet: \(tweet.content), created: \(tweet.createdAt)")
-//                }
                 
                 completion(tweets: tweets, error: nil)
             },
@@ -81,6 +76,55 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         )
     }
     
+    func retweet (
+        id: String!,
+        completion: (tweet: Tweet?, error: NSError?) -> ()
+    ) {
+        TwitterClient.sharedInstance.POST(
+            "/1.1/statuses/retweet/\(id).json",
+            parameters: nil,
+            success: {
+                (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+
+                let tweet = Tweet(dictionary: response as NSDictionary)
+                
+                completion(tweet: tweet, error: nil)
+            },
+            failure: {
+                (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                
+                completion(tweet: nil, error: error)
+                println("Error retweeting \(id).   \(error)")
+            }
+        )
+    }
+    
+    func favorite (
+        id: String!,
+        completion: (error: NSError?) -> ()
+    ) {
+        TwitterClient.sharedInstance.POST(
+            "/1.1/favorites/create.json?id=\(id)",
+            parameters: nil,
+            success: {
+                (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                completion(error: nil)
+            },
+            failure: {
+                (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                
+                completion(error: error)
+                println("Error favoriting \(id).   \(error)")
+            }
+        )
+    }
+    
+    func tweet (
+        tweet: String!,
+        completion: (error: NSError?) -> ()
+    ) {
+        
+    }
     
     func openURL (url: NSURL) {
         TwitterClient.sharedInstance.fetchAccessTokenWithPath(
@@ -109,22 +153,22 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
                     }
                 )
                 
-                TwitterClient.sharedInstance.GET(
-                    "/1.1/statuses/home_timeline.json",
-                    parameters: nil,
-                    success: {
-                        (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
-                        var tweets = Tweet.tweetsWithArray(response as [NSDictionary])
-                        
-                        for tweet in tweets {
-                            println("tweet: \(tweet.content), created: \(tweet.createdAt)")
-                        }
-                    },
-                    failure: {
-                        (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
-                        println("Error getting home timeline.")
-                    }
-                )
+//                TwitterClient.sharedInstance.GET(
+//                    "/1.1/statuses/home_timeline.json",
+//                    parameters: nil,
+//                    success: {
+//                        (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+//                        var tweets = Tweet.tweetsWithArray(response as [NSDictionary])
+//                        
+//                        for tweet in tweets {
+//                            println("tweet: \(tweet.content), created: \(tweet.createdAt)")
+//                        }
+//                    },
+//                    failure: {
+//                        (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+//                        println("Error getting home timeline.")
+//                    }
+//                )
             }
         ) {
             (error: NSError!) -> Void in

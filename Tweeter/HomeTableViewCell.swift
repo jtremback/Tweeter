@@ -9,6 +9,8 @@
 import UIKit
 
 class HomeTableViewCell: UITableViewCell {
+    var tweet: Tweet?
+
     @IBOutlet weak var displayNameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
@@ -22,9 +24,34 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var retweetedImageOffset: NSLayoutConstraint!
 
     
-    @IBOutlet weak var retweetImage: UIImageView!
-    @IBOutlet weak var replyImage: UIImageView!
-    @IBOutlet weak var favoriteImage: UIImageView!
+//    @IBOutlet weak var replyButtonImage: UIImageView!
+//    @IBAction func replyButtonAction(sender: AnyObject) {
+//
+//    }
+//    
+    @IBOutlet weak var retweetButtonImage: UIImageView!
+    @IBAction func retweetButtonAction(sender: AnyObject) {
+        println("tried")
+        TwitterClient.sharedInstance.retweet(tweet?.ID) {
+            (tweet, error) -> () in
+            if error == nil {
+                println("RT")
+                self.retweetButtonImage.image = UIImage(named: "retweet-on")
+            }
+        }
+    }
+    
+    @IBOutlet weak var favoriteButtonImage: UIImageView!
+    @IBAction func favoriteButtonAction(sender: AnyObject) {
+        println("tried")
+        TwitterClient.sharedInstance.favorite(tweet?.ID) {
+            (error) -> () in
+            if error == nil {
+                println("FAVE")
+                self.favoriteButtonImage.image = UIImage(named: "favorite-on")
+            }
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,8 +65,11 @@ class HomeTableViewCell: UITableViewCell {
     }
 
     func populate (tweet: Tweet) {
+        self.tweet = tweet
+        
         displayNameLabel.text = tweet.user?.displayName
-        usernameLabel.text = "@\(tweet.user?.username)"
+        let username = tweet.user?.username
+        usernameLabel.text = "@\(username!)"
         contentLabel.text = tweet.content
 
         avatarImage.setImageWithURL(NSURL(string: (tweet.user?.avatarURL)!))
@@ -48,6 +78,6 @@ class HomeTableViewCell: UITableViewCell {
         retweetedLabel.hidden = true
         retweetedLabelHeight.constant = 0.0
         retweetedImageOffset.constant = 0.0
-        
+        agoLabel.text = tweet.createdAt?.relativeTime
     }
 }

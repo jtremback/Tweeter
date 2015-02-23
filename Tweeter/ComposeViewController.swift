@@ -13,16 +13,18 @@ class ComposeViewController: UIViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var textView: UITextView!
-
-    @IBAction func cancelButtonPressed(sender: AnyObject) {
-    }
     
     @IBAction func tweetButtonPressed(sender: AnyObject) {
+        
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        textView.becomeFirstResponder()
+        displayNameLabel.text = User.currentUser?.displayName
+        usernameLabel.text = "@\((User.currentUser?.username)!)"
+        avatarImage.setImageWithURL(NSURL(string: (User.currentUser?.avatarURL)!))
         // Do any additional setup after loading the view.
     }
 

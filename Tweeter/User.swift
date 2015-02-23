@@ -50,7 +50,7 @@ class User: NSObject {
         set (user) {
             _currentUser = user
             
-            if currentUser != nil {
+            if _currentUser != nil {
                 var data = NSJSONSerialization.dataWithJSONObject(
                     user!.dictionary,
                     options: nil,

@@ -55,7 +55,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         sourceApplication: String?,
         annotation: AnyObject?
     ) -> Bool {
-        TwitterClient.sharedInstance.openURL(url)
+//        if User.currentUser != nil {
+            TwitterClient.sharedInstance.openURL(url)
+            var vc = storyboard.instantiateViewControllerWithIdentifier(
+                "HomeViewController"
+            ) as UIViewController
+            
+            window?.rootViewController = vc
+//        }
         return true
     }
 

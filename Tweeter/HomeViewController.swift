@@ -11,6 +11,11 @@ import UIKit
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
 
+    @IBAction func signOutAction(sender: AnyObject) {
+        User.currentUser = nil
+        self.performSegueWithIdentifier("logoutSegue", sender: self)
+    }
+    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -46,13 +51,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         TwitterClient.sharedInstance.getHomeTweetsForCurrentUser({
             (tweets, error) in
             
-            if error != nil {
-                self.tableView.hidden = true
-            } else {
-                self.tableView.hidden = false
-                self.tweets = tweets
-                self.tableView.reloadData()
-            }
+            self.tableView.hidden = false
+            self.tweets = tweets
+            self.tableView.reloadData()
 
             self.refreshControl.endRefreshing()
         })
