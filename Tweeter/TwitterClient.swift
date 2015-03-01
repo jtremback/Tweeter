@@ -123,7 +123,20 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         tweet: String!,
         completion: (error: NSError?) -> ()
     ) {
-        
+        TwitterClient.sharedInstance.POST(
+            "1.1/statuses/update.json",
+            parameters: ["status": tweet] as NSDictionary,
+            success: {
+                (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                completion(error: nil)
+            },
+            failure: {
+                (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                
+                completion(error: error)
+                println("Error tweeting.   \(error)")
+            }
+        )
     }
     
     func openURL (

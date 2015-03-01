@@ -22,13 +22,7 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var retweetedImage: UIImageView!
     @IBOutlet weak var retweetedImageHeight: NSLayoutConstraint!
     @IBOutlet weak var retweetedImageOffset: NSLayoutConstraint!
-
     
-//    @IBOutlet weak var replyButtonImage: UIImageView!
-//    @IBAction func replyButtonAction(sender: AnyObject) {
-//
-//    }
-//    
     @IBOutlet weak var retweetButtonImage: UIImageView!
     @IBAction func retweetButtonAction(sender: AnyObject) {
         println("tried")

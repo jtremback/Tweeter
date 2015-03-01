@@ -395,7 +395,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="replyButtonAction:" destination="T4p-Ul-8na" eventType="touchUpInside" id="0aa-7X-luw"/>
+                                                        <segue destination="zWw-dS-Lgt" kind="show" identifier="replySegue" id="rFP-hZ-lOQ"/>
                                                     </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="retweet" translatesAutoresizingMaskIntoConstraints="NO" id="uGe-P4-JXc" userLabel="Retweet">
@@ -413,6 +413,7 @@
                                                     <connections>
                                                         <action selector="retweetButtonAction:" destination="T4p-Ul-8na" eventType="touchUpInside" id="LJK-Zv-eBn"/>
                                                         <action selector="retweetButtonAction:" destination="DAe-OE-VEW" eventType="touchUpInside" id="ZG5-CM-lTk"/>
+                                                        <action selector="retweetButtonAction:" destination="ENx-9l-NrY" eventType="touchUpInside" id="p1L-1E-jJ1"/>
                                                     </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favorite" translatesAutoresizingMaskIntoConstraints="NO" id="2QT-hr-4x6" userLabel="Favorite">
@@ -529,7 +530,7 @@
                                 <state key="normal" title="New"/>
                             </button>
                             <connections>
-                                <segue destination="zWw-dS-Lgt" kind="show" identifier="composeSegue" id="vSq-H7-avC"/>
+                                <segue destination="zWw-dS-Lgt" kind="show" identifier="newSegue" id="vSq-H7-avC"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -626,7 +627,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xRf-WN-3n8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1317" y="1808"/>
+            <point key="canvasLocation" x="593" y="1819"/>
         </scene>
     </scenes>
     <resources>
@@ -635,6 +636,6 @@
         <image name="retweet" width="36" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vSq-H7-avC"/>
+        <segue reference="5ST-wn-eZh"/>
     </inferredMetricsTieBreakers>
 </document>

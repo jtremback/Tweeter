@@ -15,7 +15,14 @@ class ComposeViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     
     @IBAction func tweetButtonPressed(sender: AnyObject) {
-        
+        TwitterClient.sharedInstance.tweet(textView.text) {
+            (error: NSError?) -> () in
+            self.back()
+        }
+    }
+
+    func back () {
+        self.navigationController?.popViewControllerAnimated(true)
     }
 
     override func viewDidLoad() {

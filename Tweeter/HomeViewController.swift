@@ -108,5 +108,29 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Pass the selected object to the new view controller.
     }
 
-
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        println("prepare for segue : \(segue.identifier!)")
+//        if (segue.identifier! == "gototweet") {
+//            var indexPath = sender as? NSIndexPath
+//            var tweet = self.tweets![indexPath!.row]
+//            let tweetDetailsVC = segue.destinationViewController as TweetDetailsViewController
+//            tweetDetailsVC.tweet = tweet
+//            tweetDetailsVC.delegate = self
+//            tweetDetailsVC.indexPath = indexPath
+//        }
+//        else if (segue.identifier! == "gotocompose") {
+//            var user = sender as User
+//            let composeVC = segue.destinationViewController as ComposeViewController
+//            composeVC.user = user
+//            composeVC.tweet = nil
+//            composeVC.delegate = self
+//        }
+//        else if (segue.identifier! == "gotoreply") {
+//            var tweet = sender as Tweet
+//            let composeVC = segue.destinationViewController as ComposeViewController
+//            composeVC.user = nil
+//            composeVC.tweet = tweet
+//            composeVC.delegate = self
+//        }
+//    }
 }
