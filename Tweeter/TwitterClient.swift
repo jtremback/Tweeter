@@ -71,7 +71,7 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
                 (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
                 
                 completion(tweets: nil, error: error)
-                println("Error getting home timeline.")
+                println("Error getting home timeline.: \(error)")
             }
         )
     }
@@ -126,7 +126,10 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         
     }
     
-    func openURL (url: NSURL) {
+    func openURL (
+        url: NSURL,
+        completion: (error: NSError?) -> ()
+    ) {
         TwitterClient.sharedInstance.fetchAccessTokenWithPath(
             "oauth/access_token",
             method: "POST",
@@ -145,30 +148,16 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
                         (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
                         var user = User(dictionary: response as NSDictionary)
                         User.currentUser = user
+                        completion(error: nil)
                         println(user.displayName)
                     },
                     failure: {
                         (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
-                        println("lets try that again")
+                        
+                        completion(error: error)
+                        println("Error getting credentials: \(error)")
                     }
                 )
-                
-//                TwitterClient.sharedInstance.GET(
-//                    "/1.1/statuses/home_timeline.json",
-//                    parameters: nil,
-//                    success: {
-//                        (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
-//                        var tweets = Tweet.tweetsWithArray(response as [NSDictionary])
-//                        
-//                        for tweet in tweets {
-//                            println("tweet: \(tweet.content), created: \(tweet.createdAt)")
-//                        }
-//                    },
-//                    failure: {
-//                        (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
-//                        println("Error getting home timeline.")
-//                    }
-//                )
             }
         ) {
             (error: NSError!) -> Void in

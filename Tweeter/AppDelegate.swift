@@ -16,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "logout", name: logoutNotification, object: nil)
+        
         if User.currentUser != nil {
             var vc = storyboard.instantiateViewControllerWithIdentifier(
                 "HomeViewController"
@@ -25,6 +27,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         return true
+    }
+
+    func logout() {
+        var vc = storyboard.instantiateViewControllerWithIdentifier(
+            "LoginViewController"
+        ) as UIViewController
+
+        window?.rootViewController = vc
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -55,14 +65,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         sourceApplication: String?,
         annotation: AnyObject?
     ) -> Bool {
-//        if User.currentUser != nil {
-            TwitterClient.sharedInstance.openURL(url)
-            var vc = storyboard.instantiateViewControllerWithIdentifier(
+        TwitterClient.sharedInstance.openURL(url) {
+            (error) in
+            
+            var vc = self.storyboard.instantiateViewControllerWithIdentifier(
                 "HomeViewController"
             ) as UIViewController
             
-            window?.rootViewController = vc
-//        }
+            self.window?.rootViewController = vc
+        }
         return true
     }
 
