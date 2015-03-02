@@ -57,4 +57,4 @@ Time spent: [10 hours]
 
 ### Walkthrough
 
-![Video Walkthrough]()
+![Video Walkthrough](https://raw.githubusercontent.com/jtremback/Tweeter/master/walkthrough2.gif)
