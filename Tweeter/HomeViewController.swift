@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SideBarDelegate {
     @IBOutlet weak var tableView: UITableView!
 
     @IBAction func signOutAction(sender: AnyObject) {
@@ -22,6 +22,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     var tweets: [Tweet]?
     var refreshControl: UIRefreshControl!
+    var sideBar = SideBar()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
+        
+        sideBar = SideBar(sourceView: self.view, menuItems: ["Profile", "Home", "Mentions"])
+        sideBar.delegate = self
 
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(
@@ -73,7 +77,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         ) as HomeTableViewCell
         
         if let tweets = self.tweets {
-            cell.populate(self.tweets![indexPath.row])
+            cell.profileButtonOutlet.tag = indexPath.row
+            cell.populate(self.tweets![indexPath.row], parent: self)
         }
         
         return cell
@@ -92,6 +97,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
 
+    func sideBarDidSelectButtonAtIndex(index: Int) {
+        if index == 0 {
+            self.performSegueWithIdentifier("profileSegue", sender: self)
+        }
+    }
 
     // MARK: - Navigation
 
@@ -107,30 +117,4 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        println("prepare for segue : \(segue.identifier!)")
-//        if (segue.identifier! == "gototweet") {
-//            var indexPath = sender as? NSIndexPath
-//            var tweet = self.tweets![indexPath!.row]
-//            let tweetDetailsVC = segue.destinationViewController as TweetDetailsViewController
-//            tweetDetailsVC.tweet = tweet
-//            tweetDetailsVC.delegate = self
-//            tweetDetailsVC.indexPath = indexPath
-//        }
-//        else if (segue.identifier! == "gotocompose") {
-//            var user = sender as User
-//            let composeVC = segue.destinationViewController as ComposeViewController
-//            composeVC.user = user
-//            composeVC.tweet = nil
-//            composeVC.delegate = self
-//        }
-//        else if (segue.identifier! == "gotoreply") {
-//            var tweet = sender as Tweet
-//            let composeVC = segue.destinationViewController as ComposeViewController
-//            composeVC.user = nil
-//            composeVC.tweet = tweet
-//            composeVC.delegate = self
-//        }
-//    }
 }

@@ -76,6 +76,29 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         )
     }
     
+    func getTweetsForUser (
+        user_id: String!,
+        completion: (tweets: [Tweet]?, error: NSError?) -> ()
+    ) {
+        TwitterClient.sharedInstance.POST(
+            "/1.1/statuses/user_timeline.json?user_id=\(user_id)",
+            parameters: nil,
+            success: {
+                (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                println(response)
+                var tweets = Tweet.tweetsWithArray(response as [NSDictionary])
+                
+                completion(tweets: tweets, error: nil)
+            },
+            failure: {
+                (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                
+                completion(tweets: nil, error: error)
+                println("Error getting home timeline.: \(error)")
+            }
+        )
+    }
+    
     func retweet (
         id: String!,
         completion: (tweet: Tweet?, error: NSError?) -> ()

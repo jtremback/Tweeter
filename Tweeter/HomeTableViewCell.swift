@@ -10,7 +10,10 @@ import UIKit
 
 class HomeTableViewCell: UITableViewCell {
     var tweet: Tweet?
-
+    // Terrible hack? or maybe just normal iOS.
+    var parent: AnyObject?
+    
+    @IBOutlet weak var profileButton: UIButton!
     @IBOutlet weak var displayNameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
@@ -47,6 +50,12 @@ class HomeTableViewCell: UITableViewCell {
         }
     }
     
+    @IBOutlet weak var profileButtonOutlet: UIButton!
+    @IBAction func profileButtonAction(sender: AnyObject) {
+        println(sender.tag)
+        parent?.performSegueWithIdentifier("profileSegue", sender: tweet!)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -58,8 +67,10 @@ class HomeTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func populate (tweet: Tweet) {
+    func populate (tweet: Tweet, parent: AnyObject) {
         self.tweet = tweet
+        self.parent = parent
+        
         
         displayNameLabel.text = tweet.user?.displayName
         let username = tweet.user?.username
