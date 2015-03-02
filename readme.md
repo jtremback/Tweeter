@@ -29,3 +29,32 @@ Time spent: `<Number of hours spent>`
 ### Walkthrough
 
 ![Video Walkthrough](https://raw.githubusercontent.com/jtremback/Tweeter/master/walkthrough.gif)
+
+# Tweeter Redux
+
+Time spent: [10 hours]
+
+### Features
+
+#### Required
+
+- [x] Menu: Dragging anywhere in the view should reveal the menu.
+- [x] Menu: The menu should include links to your profile, the home timeline, and the mentions view.
+- [x] Menu: The menu can look similar to the LinkedIn menu below or feel free to take liberty with the UI.
+- [x] Profile: Contains the user header view
+- [x] Profile: Contains a section with the users basic stats: # tweets, # following, # followers
+- [x] Home: Tapping on a user image should bring up that user's profile page
+
+#### Optional
+
+- [ ] Profile: Implement the paging view for the user description.
+- [ ] Profile: As the paging view moves, increase the opacity of the background screen. See the actual Twitter app for this effect
+- [ ] Profile: Pulling down the profile page should blur and resize the header image.
+- [ ] Account switching: Long press on tab bar to bring up Account view with animation
+- [ ] Account switching: Tap account to switch to
+- [ ] Account switching: Include a plus button to Add an Account
+- [ ] Account switching: Swipe to delete an account
+
+### Walkthrough
+
+![Video Walkthrough]()

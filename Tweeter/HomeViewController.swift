@@ -31,6 +31,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
+        tableView.hidden = true
         
         sideBar = SideBar(sourceView: self.view, menuItems: ["Profile", "Home", "Mentions"])
         sideBar.delegate = self
@@ -99,7 +100,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     func sideBarDidSelectButtonAtIndex(index: Int) {
         if index == 0 {
-            self.performSegueWithIdentifier("profileSegue", sender: self)
+            self.performSegueWithIdentifier("myProfileSegue", sender: self)
         }
     }
 
@@ -113,8 +114,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             dest.tweet = tweets?[indexPath.row]
             
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        } else if (segue.identifier == "myProfileSegue") {
+            let dest = segue.destinationViewController as ProfileViewController
+            let user = User.currentUser
+            dest.populate(user!)
+        }  else if (segue.identifier == "otherProfileSegue") {
+            let dest = segue.destinationViewController as ProfileViewController
+            let user: AnyObject? = sender? as User
+            dest.populate(user!)
         }
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
 }

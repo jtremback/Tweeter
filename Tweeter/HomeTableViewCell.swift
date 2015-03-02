@@ -53,7 +53,8 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var profileButtonOutlet: UIButton!
     @IBAction func profileButtonAction(sender: AnyObject) {
         println(sender.tag)
-        parent?.performSegueWithIdentifier("profileSegue", sender: tweet!)
+        parent?.performSegueWithIdentifier("otherProfileSegue", sender: tweet?.user
+        )
     }
     
     override func awakeFromNib() {

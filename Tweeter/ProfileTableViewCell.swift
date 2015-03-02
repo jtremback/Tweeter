@@ -15,6 +15,7 @@ class ProfileTableViewCell: UITableViewCell {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var avatarImage: UIImageView!
+    @IBOutlet weak var headerImage: UIImageView!
 
     @IBOutlet weak var tweetsLabel: UILabel!
     @IBOutlet weak var followingLabel: UILabel!
@@ -37,9 +38,15 @@ class ProfileTableViewCell: UITableViewCell {
         displayNameLabel.text = user.displayName
         let username = user.username
         usernameLabel.text = "@\(username!)"
-        contentLabel.text = user.displayName
+        contentLabel.text = user.tagline
+        
+        tweetsLabel.text = "\(user.statuses_count!)"
+        followingLabel.text = "\(user.friends_count!)"
+        followersLabel.text = "\(user.followers_count!)"
 
         avatarImage.setImageWithURL(NSURL(string: (user.avatarURL)!))
+        let banner = (user.banner_url != nil) ? user.banner_url : user.background_url!
+        headerImage.setImageWithURL(NSURL(string: (banner)!))
     }
 
 }

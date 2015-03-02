@@ -62,7 +62,7 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
             parameters: nil,
             success: {
                 (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
-                println(response)
+//                println(response)
                 var tweets = Tweet.tweetsWithArray(response as [NSDictionary])
                 
                 completion(tweets: tweets, error: nil)
@@ -80,7 +80,7 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
         user_id: String!,
         completion: (tweets: [Tweet]?, error: NSError?) -> ()
     ) {
-        TwitterClient.sharedInstance.POST(
+        TwitterClient.sharedInstance.GET(
             "/1.1/statuses/user_timeline.json?user_id=\(user_id)",
             parameters: nil,
             success: {

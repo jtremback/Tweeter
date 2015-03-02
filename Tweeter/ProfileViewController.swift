@@ -21,6 +21,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 
     var tweets: [Tweet]?
+    var user: User?
     var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
@@ -30,32 +31,23 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
-
-//        refreshControl = UIRefreshControl()
-//        refreshControl.addTarget(
-//            self,
-//            action: "getTweets",
-//            forControlEvents: UIControlEvents.ValueChanged
-//        )
-//
-//        let dummyTableVC = UITableViewController()
-//        dummyTableVC.tableView = tableView
-//        dummyTableVC.refreshControl = refreshControl
+        tableView.hidden = true
         
         navigationItem.title = "Profile"
-        getTweets()
+    }
 
+    func populate (user: AnyObject) {
+        self.user = user as? User
+        getTweets()
     }
 
     func getTweets () {
-        TwitterClient.sharedInstance.getHomeTweetsForCurrentUser({
+        TwitterClient.sharedInstance.getTweetsForUser(self.user?.user_id, completion: {
             (tweets, error) in
             
             self.tableView.hidden = false
             self.tweets = tweets
             self.tableView.reloadData()
-
-//            self.refreshControl.endRefreshing()
         })
     }
 
@@ -73,6 +65,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             let cell = tableView.dequeueReusableCellWithIdentifier(
                 "ProfileTableViewCell"
             ) as ProfileTableViewCell
+
+            if let user = self.user {
+                cell.populate(self.user!)
+            }
 
             return cell
         } else {
@@ -101,29 +97,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             return 0
         }
     }
-
-
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if (segue.identifier == "tweetDetailSegue") {
-//            let indexPath = self.tableView.indexPathForSelectedRow()!
-//            let dest = segue.destinationViewController as TweetDetailViewController
-//            dest.tweet = tweets?[indexPath.row]
-//            
-//            tableView.deselectRowAtIndexPath(indexPath, animated: true)
-//        } else if (segue.identifier == "profileSegue") {
-//            let indexPath = self.tableView.indexPathForSelectedRow()!
-//            let dest = segue.destinationViewController as ProfileViewController
-//            dest.user = tweets?.user[indexPath.row]
-//            
-//            tableView.deselectRowAtIndexPath(indexPath, animated: true)
-//        }
-//        // Get the new view controller using segue.destinationViewController.
-//        // Pass the selected object to the new view controller.
-//    }
-
 }
 
 
