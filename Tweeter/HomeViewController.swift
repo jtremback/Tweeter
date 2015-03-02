@@ -44,7 +44,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         navigationItem.title = "Home"
         getTweets()
-        // Do any additional setup after loading the view.
+
     }
 
     func getTweets () {
